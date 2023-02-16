@@ -1,0 +1,16 @@
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) throw `ඔබට අවශ්‍ය පනිවිඩය ඇතුලත් කරන්ම`
+    if (text.length < 10) throw `අවමය වචන 10 කි!`
+    if (text.length > 1000) throw `උපරිමය 1000 කි!`
+    let teks = `*${command.toUpperCase()}!*\n\nපුද්ගලයා : *@${m.sender.split`@`[0]}*\n\nපනිවිඩය : ${text}\n`
+    conn.reply(global.owner[0] + '@s.whatsapp.net', m.quoted ? teks + m.quoted.text : teks, null, {
+        contextInfo: {
+            mentionedJid: [m.sender]
+        }
+    })
+    m.reply(`_යවන ලදී_`)
+}
+handler.help = ['report', 'request'].map(v => v + ' <text>')
+handler.tags = ['info']
+handler.command = /^(report|request)$/i
+module.exports = handler
