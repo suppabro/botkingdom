@@ -38,6 +38,6 @@ ${usedPrefix + command} si your messages
 }
 handler.help = ['translate'].map(v => v + ' <lang> <teks>')
 handler.tags = ['tools']
-handler.command = /^(tr(anslate)?)$/i
+handler.command = /^(trss(ssanslate)?)$/i
 
 module.exports = handler
